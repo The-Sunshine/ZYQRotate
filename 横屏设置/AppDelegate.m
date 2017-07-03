@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "ZYQNaviController.h"
 @interface AppDelegate ()
 
 @end
@@ -19,14 +18,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     ViewController * vc = [[ViewController alloc]init];
-    ZYQNaviController * navi = [[ZYQNaviController alloc]initWithRootViewController:vc];
     
     self.window = [[UIWindow alloc]init];
     self.window.frame = [UIScreen mainScreen].bounds;
     [self.window makeKeyAndVisible];
-    self.window.rootViewController = navi;
+    self.window.rootViewController = vc;
     return YES;
-
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

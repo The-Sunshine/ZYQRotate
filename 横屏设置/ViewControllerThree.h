@@ -10,4 +10,6 @@
 
 @interface ViewControllerThree : UIViewController
 
+@property (nonatomic,assign) NSInteger type;
+
 @end

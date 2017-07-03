@@ -19,14 +19,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
-//- (UIInterfaceOrientationMask) navigationControllerSupportedInterfaceOrientations:(UINavigationController *) navigationController{
-//    if(self.supportLandscape){
-//        return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeRight;
-//    }else{
-//        return UIInterfaceOrientationMaskPortrait;
-//    }
-//}
-
 //支持旋转
 -(BOOL)shouldAutorotate{
     
@@ -37,7 +29,6 @@
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     
     return [self.topViewController supportedInterfaceOrientations];
-    
 }
 
 @end

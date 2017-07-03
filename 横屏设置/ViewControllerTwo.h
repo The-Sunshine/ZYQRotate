@@ -10,4 +10,6 @@
 
 @interface ViewControllerTwo : UIViewController
 
+@property (nonatomic,assign) NSInteger type;
+
 @end

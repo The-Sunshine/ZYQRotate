@@ -17,22 +17,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.view.backgroundColor = [UIColor redColor];
+    
+    if (self.type == 2) {
+        
+        UIButton * bottomBtn = [[UIButton alloc]init];
+        bottomBtn.frame = CGRectMake(0, self.view.center.y, self.view.frame.size.width, self.view.center.y);
+        bottomBtn.backgroundColor = [UIColor greenColor];
+        [bottomBtn setTitle:@"返回" forState:UIControlStateNormal];
+        [bottomBtn addTarget:self action:@selector(bottomClick) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:bottomBtn];
+    }
 }
 
+-(void)bottomClick
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

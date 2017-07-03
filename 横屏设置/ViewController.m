@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ViewControllerTwo.h"
+#import "ZYQNaviController.h"
 @interface ViewController ()
 
 @end
@@ -23,32 +24,43 @@
                                              selector:@selector(onDeviceOrientationChange)
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
+    
+    [self initUI];
 }
-//支持旋转
-
--(BOOL)shouldAutorotate{
-    
-    return YES;
-    
-}
-
-//支持的方向 因为界面A我们只需要支持竖屏
-
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    
-    return UIInterfaceOrientationMaskPortrait;
-    
-}
-
 -(void)onDeviceOrientationChange
 {
-    
+    //屏幕旋转 改变布局
 }
-
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+-(void)initUI
+{
+    UIButton * topBtn = [[UIButton alloc]init];
+    topBtn.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.center.y);
+    topBtn.backgroundColor = [UIColor yellowColor];
+    [topBtn setTitle:@"有Navi" forState:UIControlStateNormal];
+    [topBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [topBtn addTarget:self action:@selector(topClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:topBtn];
+    
+    UIButton * bottomBtn = [[UIButton alloc]init];
+    bottomBtn.frame = CGRectMake(0, self.view.center.y, self.view.frame.size.width, self.view.center.y);
+    bottomBtn.backgroundColor = [UIColor greenColor];
+    [bottomBtn setTitle:@"无Navi" forState:UIControlStateNormal];
+    [bottomBtn addTarget:self action:@selector(bottomClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:bottomBtn];
+}
+-(void)topClick
 {
     ViewControllerTwo *vc = [[ViewControllerTwo alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+    vc.type = 1;
+    ZYQNaviController * navi = [[ZYQNaviController alloc]initWithRootViewController:vc];
+    [self presentViewController:navi animated:YES completion:nil];
 }
+-(void)bottomClick
+{
+    ViewControllerTwo *vc = [[ViewControllerTwo alloc]init];
+    vc.type = 2;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 
 @end
